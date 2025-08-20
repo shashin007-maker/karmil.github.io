@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karmil Patel — Daytime Nature Portfolio</title>
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    background: linear-gradient(to top, #87ceeb 0%, #beeefd 70%);
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Sun */
+  #sun {
+    position: fixed;
+    top: 50px; right: 50px;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, #ff9900, #fbff00);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* Clouds with parallax */
+  .cloud {
+    position: fixed;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cloud1 { width: 120px; height: 60px; top: 60px; left: -190px; animation: float1 10s linear infinite; }
+  .cloud2 { width: 160px; height: 80px; top: 120px; left: -299px; animation: float2 90s linear infinite; }
+  .cloud3 { width: 100px; height: 50px; top: 30px; left: -90px; animation: float1 30s linear infinite; }
+  .cloud4 { width: 120px; height: 60px; top: 60px; left: -120px; animation: float1 99s linear infinite; }
+  .cloud5 { width: 120px; height: 60px; top: 60px; left: -150px; animation: float1 10s linear infinite; }
+      @keyframes float1 { 0% {transform: translateX(0);} 100% {transform: translateX(110vw);} }
+  @keyframes float2 { 0% {transform: translateX(0);} 100% {transform: translateX(110vw);} }
+
+  /* Grass at bottom */
+  #grass {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, #3cb043 0%, #7ed957 100%);
+    z-index: 2;
+  }
+
+  /* Forest Trees */
+  #forest {
+    position: fixed;
+    bottom: 20%; left: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 3;
+  }
+  #forest img {
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Content Layer */
+  .container {
+    position: relative;
+    z-index: 4;
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 28px 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    color: #1a1a1a;
+  }
+  h1 { font-weight: 700; font-size: 2rem; margin-bottom: 16px; }
+  h1 .typing { border-right: 3px solid #3cb043; padding-right: 5px; }
+  p.intro-text { font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
+  .hobbies h2 { font-size: 1.5rem; color: #3cb043; margin-bottom: 12px; }
+  .hobbies ul { list-style: none; padding-left: 0; }
+  .hobbies ul li { background: rgba(60, 176, 67, 0.1); padding: 10px 14px; margin-bottom: 10px; border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Sun -->
+<div id="sun"></div>
+
+<!-- Clouds -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+<div class="cloud cloud4"></div>
+<div class="cloud cloud5"></div>
+
+
+<!-- Grass and Trees -->
+<div id="grass"></div>
+<div id="forest">
+  <img src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-cartoon-tree-green-tree-png-image_9733341.png" style="height:90%;" />
+  <img src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-cartoon-tree-green-tree-png-image_9733341.png" style="height:100%;" />
+  <img src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-cartoon-tree-green-tree-png-image_9733341.png" style="height:85%;" />
+  <img src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-cartoon-tree-green-tree-png-image_9733341.png" style="height:95%;" />
+  <img src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-cartoon-tree-green-tree-png-image_9733341.png" style="height:100%;" />
+</div>
+
+
+<!-- Personal Info Content -->
+<main class="container" id="home">
+  <h1><span class="typing" id="typing-text"></span></h1>
+  <p class="intro-text">
+    I’m a passionate web developer and educator based in Canada.<br />
+    I love creating interactive websites and I’m a student in <strong>Codeyoung</strong>.<br />
+    In my free time, I enjoy exploring space science, playing games,<br />
+    and building full-stack projects.
+  </p>
+
+  <section class="hobbies" id="hobbies">
+    <h2 class="section-title">My Hobbies</h2>
+    <ul>
+        <li>🚀 Exploring space science: I like space because I can learn lots of things, like how black holes work.</li>
+        <li>🎮 Playing games: I love playing Roblox and Minecraft a lot; they’re just so fun.</li>
+        <li>💻 Building full-stack projects: I’ve made some cool projects, and they sometimes impress my teachers.</li>
+        <li>📚 Learning new coding: When I learn more, I can make so many things.</li>
+        <li>🎨 Designing creative websites: Some of my cool projects are great.</li>
+        <li>☺️ I love playing outside with my friends </li>
+    </ul>
+  </section>
+
+
+  <section class="Moments I will never forget" id="Moments I will never forget">
+    <h2 class="section-title">Moments I will never forget</h2>
+    <ul>
+        <li>One time i went hiking and saw the water fall.</li>
+        <li>I WON and got on 1st</li>
+        <li>I started a small shop and got lot of money in fact $183</li>
+        <li>Ect (Not sharing my life things)</li>
+    </ul>
+  </section>
+
+    <section class="thank you" id="thank you ">
+    <h2 class="section-title">Thank you</h2>
+    <p>"Thank you for giving me the opportunity to join the 🅲🅾🅳🅴 🆁🆄🆂🅷 competition. I’ll give my best effort, and if I achieve 1st place, I’ll be truly thankful." </p>
+  </section>
+</main>
+
+<script>
+  // Typing effect
+  const text = "Hello! I’m Karmil Patel";
+  let index = 0;
+  const typingEl = document.getElementById('typing-text');
+  function type() {
+    if (index < text.length) {
+      typingEl.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100);
+    }
+  }
+  type();
+</script>
+
+</body>
+</html>
