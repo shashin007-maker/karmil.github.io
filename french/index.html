@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Learning — High School Classroom</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --accent: #1d4ed8;
+      --muted: #374151;
+      --border: #cbd5e1;
+      --glass: rgba(255, 255, 255, 0.5);
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      color: var(--muted);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: var(--accent);
+    }
+
+    nav {
+      background: #e0e7ff;
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: var(--glass);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      color: var(--accent);
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateX(3px);
+      background: #dbeafe;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 20px;
+    }
+
+    main {
+      min-height: 60vh;
+    }
+
+    .section {
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+    }
+
+    .section h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .word {
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 6px;
+    }
+
+    .sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width:900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>French Learning — High School Classroom</h1>
+    <p>Learn French with Images: Numbers, Colors, Clothes, Emotions, Actions, Animals, People, Tools</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3>Classroom Subjects</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+        <button class="btn" onclick="showSection('numbers')">Numbers 1–20</button>
+        <button class="btn" onclick="showSection('colors')">Colors</button>
+        <button class="btn" onclick="showSection('clothes')">Clothes</button>
+        <button class="btn" onclick="showSection('emotions')">Emotions & Feelings</button>
+        <button class="btn" onclick="showSection('actions')">Actions</button>
+        <button class="btn" onclick="showSection('animals')">Animals</button>
+        <button class="btn" onclick="showSection('people')">People</button>
+        <button class="btn" onclick="showSection('tools')">Tools</button>
+      </div>
+    </nav>
+
+    <main>
+      <section id="numbers" class="section"></section>
+      <section id="colors" class="section" style="display:none"></section>
+      <section id="clothes" class="section" style="display:none"></section>
+      <section id="emotions" class="section" style="display:none"></section>
+      <section id="actions" class="section" style="display:none"></section>
+      <section id="animals" class="section" style="display:none"></section>
+      <section id="people" class="section" style="display:none"></section>
+      <section id="tools" class="section" style="display:none"></section>
+      <footer>Click any card to hear French pronunciation</footer>
+    </main>
+  </div>
+
+  <script>
+    // Categories with images
+    const numbers = [['un', 'one', 'https://i.pinimg.com/736x/0f/62/65/0f6265fe8dc448b8f032f161db77c033.jpg'], ['deux', 'two', 'images/deux.png'], ['trois', 'three', 'images/trois.png'], ['quatre', 'four', 'images/quatre.png'], ['cinq', 'five', 'images/cinq.png'], ['six', 'six', 'images/six.png'], ['sept', 'seven', 'images/sept.png'], ['huit', 'eight', 'images/huit.png'], ['neuf', 'nine', 'images/neuf.png'], ['dix', 'ten', 'images/dix.png']];
+    const colors = [['rouge', 'red', 'images/rouge.png'], ['bleu', 'blue', 'images/bleu.png'], ['vert', 'green', 'images/vert.png'], ['jaune', 'yellow', 'images/jaune.png'], ['noir', 'black', 'images/noir.png'], ['blanc', 'white', 'images/blanc.png'], ['rose', 'pink', 'images/rose.png'], ['orange', 'orange', 'images/orange.png'], ['violet', 'purple', 'images/violet.png'], ['marron', 'brown', 'images/marron.png']];
+    const clothes = [['une chemise', 'shirt', 'images/chemise.png'], ['un pantalon', 'pants', 'images/pantalon.png'], ['une robe', 'dress', 'images/robe.png'], ['un manteau', 'coat', 'images/manteau.png'], ['des chaussures', 'shoes', 'images/chaussures.png'], ['un chapeau', 'hat', 'images/chapeau.png'], ['des chaussettes', 'socks', 'images/chaussettes.png'], ['un jean', 'jeans', 'images/jean.png']];
+    const emotions = [['heureux', 'happy', 'images/heureux.png'], ['triste', 'sad', 'images/triste.png'], ['en colère', 'angry', 'images/colere.png'], ['surpris', 'surprised', 'images/surpris.png'], ['effrayé', 'scared', 'images/effraye.png'], ['fatigué', 'tired', 'images/fatigue.png']];
+    const actions = [['manger', 'eat', 'images/manger.png'], ['boire', 'drink', 'images/boire.png'], ['courir', 'run', 'images/courir.png'], ['marcher', 'walk', 'images/marcher.png'], ['dormir', 'sleep', 'images/dormir.png'], ['écrire', 'write', 'images/ecrire.png']];
+    const animals = [['chien', 'dog', 'images/chien.png'], ['chat', 'cat', 'images/chat.png'], ['oiseau', 'bird', 'images/oiseau.png'], ['cheval', 'horse', 'images/cheval.png'], ['poisson', 'fish', 'images/poisson.png'], ['vache', 'cow', 'images/vache.png']];
+    const people = [['homme', 'man', 'images/homme.png'], ['femme', 'woman', 'images/femme.png'], ['garçon', 'boy', 'images/garcon.png'], ['fille', 'girl', 'images/fille.png'], ['bébé', 'baby', 'images/bebe.png'], ['ami', 'friend', 'images/ami.png']];
+    const tools = [['marteau', 'hammer', 'images/marteau.png'], ['tournevis', 'screwdriver', 'images/tournevis.png'], ['clés', 'keys', 'images/cles.png'], ['ciseaux', 'scissors', 'images/ciseaux.png'], ['ordinateur', 'computer', 'images/ordinateur.png'], ['stylo', 'pen', 'images/stylo.png']];
+
+    // Create card
+    function makeCard(french, english, img) {
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML = `
+    ${img ? `<img src="${img}" alt="${english}">` : ''}
+    <div class="word">${french}</div>
+    <div class="sub">${english}</div>`;
+      el.onclick = () => speak(french);
+      return el;
+    }
+
+    // Populate section
+    function populateSection(id, data, title) {
+      const sec = document.getElementById(id);
+      sec.innerHTML = `<h2>${title}</h2><div class="grid" id="${id}Grid"></div>`;
+      const grid = document.getElementById(id + 'Grid');
+      data.forEach(d => grid.appendChild(makeCard(d[0], d[1], d[2])));
+    }
+
+    // Populate all
+    function populate() {
+      populateSection('numbers', numbers, 'Numbers 1–20');
+      populateSection('colors', colors, 'Colors');
+      populateSection('clothes', clothes, 'Clothes');
+      populateSection('emotions', emotions, 'Emotions & Feelings');
+      populateSection('actions', actions, 'Actions');
+      populateSection('animals', animals, 'Animals');
+      populateSection('people', people, 'People');
+      populateSection('tools', tools, 'Tools');
+    }
+
+    // Show section
+    function showSection(id) {
+      ['numbers', 'colors', 'clothes', 'emotions', 'actions', 'animals', 'people', 'tools'].forEach(s => {
+        document.getElementById(s).style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+    }
+
+    // Speech
+    function speak(text) {
+      if (!('speechSynthesis' in window)) return;
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = 'fr-FR';
+      const voices = window.speechSynthesis.getVoices();
+      for (const v of voices) { if (v.lang.startsWith('fr')) { msg.voice = v; break; } }
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(msg);
+    }
+
+    window.addEventListener('load', populate);
+  </script>
+</body>
+
+</html>
