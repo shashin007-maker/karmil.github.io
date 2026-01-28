@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>❄ Winter Wonderland ⛄</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background:#0b132b;
+  color:#f8fafc;
+  min-height:100vh;
+}
+
+/* Moon */
+.moon{
+  position:fixed;
+  top:30px;
+  right:40px;
+  width:90px;
+  height:90px;
+  background:#f5f3ce;
+  border-radius:50%;
+  box-shadow:0 0 40px rgba(255,255,220,.6);
+  z-index:1;
+}
+
+/* Snow */
+#snow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+}
+.snowflake{
+  position:absolute;
+  top:-30px;
+  color:white;
+  animation:fall linear infinite;
+}
+@keyframes fall{ to{ transform:translateY(110vh);} }
+
+/* Cards */
+.card{
+  background:#1e293b;
+  color:#f8fafc;
+  border:none;
+  box-shadow:0 0 12px rgba(0,0,0,.4);
+}
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+<div id="snow"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black px-3 sticky-top">
+  <span class="navbar-brand fw-bold">❄ Winter Wonderland ⛄</span>
+  <ul class="nav nav-pills ms-3" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#festival">Festival</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#market">Market</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#community">Community</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#sports">Sports</button></li>
+  </ul>
+</nav>
+
+<div class="container mt-4">
+<div class="tab-content">
+
+<!-- 🎉 FESTIVAL -->
+<div class="tab-pane fade show active" id="festival">
+<h3>🎉 Winter Festival</h3>
+<div class="row g-3">
+
+<script>
+const festivalEvents=[
+["Ice Sculpture Show","Dec 20"],
+["Snowman Contest","Dec 22"],
+["Winter Parade","Dec 24"],
+["Holiday Market","Dec 23"],
+["Ice Lantern Night","Dec 21"],
+["Snow Music Jam","Dec 22"],
+["Winter Lights Walk","Dec 23"]
+];
+document.write(festivalEvents.map((e,index)=>`
+<div class="col-md-6 col-lg-4">
+  <div class="card p-3">
+    <h5>${e[0]}</h5>
+    <p>${e[1]}</p>
+    <form onsubmit="registerEvent(event,this)">
+      <input type="text" class="form-control mb-1" placeholder="Name" required>
+      <input type="email" class="form-control mb-2" placeholder="Email" required>
+      <button class="btn btn-outline-light btn-sm w-100">Register</button>
+    </form>
+    <p>Attendees: <span class="attendees">0</span></p>
+    <ul class="attendee-list list-group list-group-flush"></ul>
+  </div>
+</div>
+`).join(""));
+</script>
+
+</div>
+</div>
+
+<!-- 🛒 MARKET -->
+<div class="tab-pane fade" id="market">
+<h3>🛍 Winter Market</h3>
+<div class="row g-3">
+<script>
+const products=[
+["Wool Scarf",15],["Hot Cocoa Mug",10],["Winter Hat",12],["Snow Gloves",8],
+["Ice Lantern",20],["Snow Candle",14]
+];
+document.write(products.map(p=>`
+<div class="col-md-4">
+  <div class="card p-3">
+    <h5>${p[0]}</h5>
+    <p>$${p[1]}</p>
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#checkout">Add to Cart</button>
+  </div>
+</div>`).join(""));
+</script>
+</div>
+</div>
+
+<!-- 👥 COMMUNITY -->
+<div class="tab-pane fade" id="community">
+<h3>👥 Cozy Community</h3>
+<div class="card p-3 mb-2">❄ “I love snowy nights and hot chocolate.”</div>
+<div class="card p-3 mb-2">⛄ “Snowman contest was amazing!”</div>
+<div class="card p-3 mb-2">🌙 “Winter lights walk felt magical.”</div>
+<form class="card p-3 mt-3" onsubmit="addPost(event)">
+  <h6>Add Your Story</h6>
+  <input id="storyText" class="form-control mb-2" placeholder="Your story" required>
+  <button class="btn btn-primary w-100">Post</button>
+</form>
+</div>
+
+<!-- 🏂 SPORTS -->
+<div class="tab-pane fade" id="sports">
+<h3>🏂 Winter Sports Tracker</h3>
+<table class="table table-dark table-striped">
+<thead><tr><th>Name</th><th>Sport</th><th>Score</th><th>Badge</th></tr></thead>
+<tbody>
+<tr><td>Bob</td><td>Skiing</td><td>85</td><td>🎖️</td></tr>
+<tr><td>Alex</td><td>Snowboarding</td><td>92</td><td>🏅</td></tr>
+<tr><td>Nina</td><td>Skating</td><td>88</td><td>🎖️</td></tr>
+<tr><td>Sam</td><td>Ice Hockey</td><td>90</td><td>🏅</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkout">
+<div class="modal-dialog">
+<div class="modal-content bg-dark text-white">
+<div class="modal-header">
+<h5>Checkout</h5>
+<button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<p>This is a fake checkout for demo only.</p>
+<button class="btn btn-success w-100" data-bs-dismiss="modal">Place Order</button>
+</div>
+</div>
+</div>
+</div>
+
+<footer class="text-center py-3 mt-4">
+❄ Winter Wonderland © 2026
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ❄ Snow
+const snow=document.getElementById("snow");
+for(let i=0;i<120;i++){
+ let s=document.createElement("div");
+ s.className="snowflake";
+ s.innerText="❄";
+ s.style.left=Math.random()*100+"vw";
+ s.style.fontSize=(8+Math.random()*14)+"px";
+ s.style.opacity=Math.random();
+ s.style.animationDuration=(6+Math.random()*6)+"s";
+ snow.appendChild(s);
+}
+
+// Festival Registration
+function registerEvent(e, form){
+  e.preventDefault();
+  const name=form.querySelector('input[type="text"]').value;
+  const email=form.querySelector('input[type="email"]').value;
+  if(!name || !email) return alert("Fill all fields!");
+  const attendees=form.parentElement.querySelector('.attendees');
+  attendees.innerText=parseInt(attendees.innerText)+1;
+  const list=form.parentElement.querySelector('.attendee-list');
+  const li=document.createElement('li');
+  li.className='list-group-item';
+  li.textContent=name;
+  list.appendChild(li);
+  form.reset();
+  alert(`Thank you ${name} for registering!`);
+}
+
+// Community Posts
+function addPost(e){
+  e.preventDefault();
+  const text=document.getElementById("storyText").value;
+  if(!text) return;
+  const post=document.createElement("div");
+  post.className="card p-3 mb-2";
+  post.innerHTML=`💬 ${text}`;
+  document.getElementById("community").appendChild(post);
+  document.getElementById("storyText").value="";
+}
+</script>
+
+</body>
+</html>
